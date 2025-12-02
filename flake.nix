@@ -4,7 +4,6 @@
   inputs = 
   {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = 
     {
       url = "github:nix-community/home-manager/release-25.11";
@@ -12,12 +11,12 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixpkgs-unstable, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
   {
     homeConfigurations."sudha" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       modules = [ 
-        ./home/notnixhome.nix 
+        ./home/home.nix 
         ({ pkgs, ... }: {
           nixpkgs.config.allowUnfree = true;
           home.username = "sudha";
