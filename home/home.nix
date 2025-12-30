@@ -19,6 +19,8 @@
         python3
         git
         cloudflared
+        nil
+        nixd
     ];
 
 
