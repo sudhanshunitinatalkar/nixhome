@@ -18,6 +18,7 @@
         mosquitto
         python3
         git
+        cloudflared
     ];
 
 
