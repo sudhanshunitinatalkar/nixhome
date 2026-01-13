@@ -11,18 +11,18 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... }:
   {
     homeConfigurations."sudha" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       modules = [ 
         ./home/home.nix 
-        ({ pkgs, ... }: {
+        {
           nixpkgs.config.allowUnfree = true;
           home.username = "sudha";
           home.homeDirectory = "/home/sudha";
           home.stateVersion = "25.11";
-        })
+        }
         ];
     };
   };
